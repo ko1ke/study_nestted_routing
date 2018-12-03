@@ -10,6 +10,8 @@ p
   strong Profile:
   = @user.profile
 
-=> link_to 'Edit', edit_user_path(@user)
+/ => link_to 'Edit', edit_user_path(@user)
+=> link_to 'Edit', edit_group_user_path(@group, @user)
 '|
-=< link_to 'Back', users_path
+/ =< link_to 'Back', users_path
+=< link_to 'Back', group_users_path

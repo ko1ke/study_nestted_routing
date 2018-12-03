@@ -2,7 +2,9 @@ h1 Editing user
 
 == render 'form'
 
-=> link_to 'Show', @user
+/ => link_to 'Show', @user
+=> link_to 'Show', group_user_path(@group, @user)
 '|
-=< link_to 'Back', users_path
+/ =< link_to 'Back', users_path
+=< link_to 'Back', group_users_path
 

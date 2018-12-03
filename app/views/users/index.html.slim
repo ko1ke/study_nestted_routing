@@ -3,7 +3,7 @@ h1 Listing users
 table
   thead
     tr
-      th Group
+      th GroupName
       th Name
       th Profile
       th
@@ -13,13 +13,20 @@ table
   tbody
     - @users.each do |user|
       tr
-        td = user.group
+        td = user.group.name
         td = user.name
         td = user.profile
-        td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+        / td = link_to 'Show', user
+        td = link_to 'Show', group_user_path(@group, user)
+        / td = link_to 'Edit', edit_user_path(user)
+        td = link_to 'Edit', edit_group_user_path(@group, user)
+        / td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', group_user_path(@group, user), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New User', new_user_path
+/ = link_to 'New User', new_user_path
+= link_to 'New User', new_group_user_path
+br
+br
+= link_to 'link to root', root_path
