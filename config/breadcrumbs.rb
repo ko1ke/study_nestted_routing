@@ -2,13 +2,19 @@ crumb :root do
   link "Home", root_path
 end
 
-crumb :groups do
-  link "Groups", groups_path
-end
-
 crumb :group do |group|
   link group.name, group
-  parent :groups
+  parent :root
+end
+
+crumb :group_users do |group|
+  link 'Group Users', group_users_path(group)
+  parent group
+end
+
+crumb :group_user do |group_user|
+  link group_user.name, group_user_path(group_user)
+  parent :group_users, group_user.group
 end
 
 # crumb :project do |project|
@@ -30,4 +36,4 @@ end
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
 # folder are loaded and reloaded automatically when you change them, just like
-# this file (`config/breadcrumbs.rb`).
+# this file 
